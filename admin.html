@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NW Cypress Logistics LLC - Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Specific adjustments for the admin dashboard header */
+        .admin-header {
+            margin-top: 100px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .admin-header h1 {
+            color: #8bc34a;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-header p {
+            color: #a5d6a7;
+            font-size: 1.1rem;
+        }
+
+        /* Loading & Error States */
+        #loading,
+        #error-container {
+            text-align: center;
+            font-size: 1.2rem;
+            padding: 3rem;
+            color: #a5d6a7;
+        }
+
+        #error-container {
+            color: #ff8a80;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header" style="background: rgba(13, 31, 20, 0.98); backdrop-filter: blur(20px);">
+        <nav class="container">
+            <a href="index.html" class="logo">NW Cypress Logistics</a>
+            <ul class="nav-links">
+                <li><a href="index.html">← Back to Site</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container admin-header fade-in visible">
+        <h1>🌲 Referral Dashboard</h1>
+        <p>Manage and track your referral links and traffic</p>
+    </div>
+
+    <div class="container fade-in visible">
+
+        <div id="loading">🍃 Loading data...</div>
+        <div id="error-container">🍂 Failed to load data. Is the Node.js API server running?</div>
+
+        <div id="dashboard-content" style="display: none;">
+            <!-- Summary Grid -->
+            <div class="admin-summary-grid fade-in visible">
+                <div class="admin-summary-card">
+                    <div class="icon">🔗</div>
+                    <div class="value" id="summary-referrals">0</div>
+                    <div class="label">Total Links</div>
+                </div>
+                <div class="admin-summary-card">
+                    <div class="icon">💼</div>
+                    <div class="value" id="summary-leads">0</div>
+                    <div class="label">Business Leads</div>
+                </div>
+                <div class="admin-summary-card">
+                    <div class="icon">🖱️</div>
+                    <div class="value" id="summary-clicks">0</div>
+                    <div class="label">Total Clicks</div>
+                </div>
+                <div class="admin-summary-card">
+                    <div class="icon">📧</div>
+                    <div class="value" id="summary-emails">0</div>
+                    <div class="label">Emails Sent</div>
+                </div>
+            </div>
+
+            <!-- Referrals Table -->
+            <div class="admin-card">
+                <h2>Generated Referral Links</h2>
+                <table class="admin-table" id="referrals-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Company</th>
+                            <th>Code</th>
+                            <th>Clicks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Leads Table -->
+            <div class="admin-card">
+                <h2>Generated Business Leads</h2>
+                <table class="admin-table" id="leads-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Submitter</th>
+                            <th>Sub Email</th>
+                            <th>Referred Business</th>
+                            <th>Business Email</th>
+                            <th>Referral Source</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sessions Table -->
+            <div class="admin-card">
+                <h2>Recent Link Clicks</h2>
+                <table class="admin-table" id="sessions-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Code Visited</th>
+                            <th>IP Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Email Logs Table -->
+            <div class="admin-card">
+                <h2>Email Notifications Sent</h2>
+                <table class="admin-table" id="emails-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Type</th>
+                            <th>Subject</th>
+                            <th>Recipient</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Activity Logs Table -->
+            <div class="admin-card">
+                <h2>System Activity Logs</h2>
+                <table class="admin-table" id="logs-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Event Type</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <div class="footer-content">
+                <h3>NW Cypress Logistics LLC</h3>
+                <p>Global Logistics Administrative Console</p>
+            </div>
+            <p>&copy; 2025 NW Cypress Logistics LLC. Internal Use Only.</p>
+        </div>
+    </footer>
+
+    <script src="env.js"></script>
+    <script>
+        async function fetchDashboardData() {
+            try {
+                // Fetch all JSON sets from the expressive API endpoints
+                const [referralsRes, sessionsRes, logsRes, leadsRes] = await Promise.all([
+                    fetch(`${ENV.API_BASE_URL}/api/admin/referrals`),
+                    fetch(`${ENV.API_BASE_URL}/api/admin/sessions`),
+                    fetch(`${ENV.API_BASE_URL}/api/admin/logs`),
+                    fetch(`${ENV.API_BASE_URL}/api/admin/leads`)
+                ]);
+
+                if (!referralsRes.ok || !sessionsRes.ok || !logsRes.ok || !leadsRes.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const referrals = await referralsRes.json();
+                const sessions = await sessionsRes.json();
+                const logs = await logsRes.json();
+                const leads = await leadsRes.json();
+
+                // Update Summary Cards
+                document.getElementById('summary-referrals').textContent = referrals.length;
+                document.getElementById('summary-leads').textContent = leads.length;
+                document.getElementById('summary-clicks').textContent = sessions.length;
+                document.getElementById('summary-emails').textContent = logs.filter(l => l.event === 'Email Sent').length;
+
+                renderReferrals(referrals);
+                renderSessions(sessions);
+                renderEmails(logs);
+                renderLogs(logs);
+                renderLeads(leads);
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('dashboard-content').style.display = 'block';
+
+            } catch (error) {
+                console.error("Dashboard fetch error:", error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-container').style.display = 'block';
+            }
+        }
+
+        function renderReferrals(data) {
+            const tbody = document.querySelector('#referrals-table tbody');
+            tbody.innerHTML = '';
+
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #a5d6a7;">No referrals found.</td></tr>';
+                return;
+            }
+
+            // Sort newest first
+            data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            data.forEach(ref => {
+                const dateRaw = new Date(ref.timestamp);
+                const dateStr = isNaN(dateRaw) ? 'N/A' : dateRaw.toLocaleString();
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${dateStr}</td>
+                    <td><strong>${ref.firstName} ${ref.lastName}</strong></td>
+                    <td>${ref.email}</td>
+                    <td>${ref.company || '—'}</td>
+                    <td class="code-col">${ref.referralCode}</td>
+                    <td><strong>${ref.sessionsCount || 0}</strong></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderSessions(data) {
+            const tbody = document.querySelector('#sessions-table tbody');
+            tbody.innerHTML = '';
+
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #a5d6a7;">No clicks logged yet.</td></tr>';
+                return;
+            }
+
+            // Sort newest first
+            data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            data.forEach(sess => {
+                const dateRaw = new Date(sess.timestamp);
+                const dateStr = isNaN(dateRaw) ? 'N/A' : dateRaw.toLocaleString();
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${dateStr}</td>
+                    <td class="code-col">${sess.referralCode}</td>
+                    <td style="opacity: 0.8;">${sess.ipAddress}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderLogs(data) {
+            const tbody = document.querySelector('#logs-table tbody');
+            tbody.innerHTML = '';
+
+            const filteredLogs = data.filter(log => log.event !== 'Email Sent');
+
+            if (filteredLogs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #a5d6a7;">No activity logged yet.</td></tr>';
+                return;
+            }
+
+            // Sort newest first
+            filteredLogs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            filteredLogs.forEach(log => {
+                const dateRaw = new Date(log.timestamp);
+                const dateStr = isNaN(dateRaw) ? 'N/A' : dateRaw.toLocaleString();
+
+                // Format the details object neatly
+                let detailsHtml = '';
+                if (log.details) {
+                    const parts = Object.entries(log.details).map(([k, v]) => `<strong>${k}</strong>: ${v}`);
+                    detailsHtml = `<span style="font-size: 0.85em; opacity: 0.9;">${parts.join(' | ')}</span>`;
+                }
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="white-space: nowrap;">${dateStr}</td>
+                    <td style="color: #4caf50; font-weight: 600;">${log.event}</td>
+                    <td>${detailsHtml}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderEmails(data) {
+            const tbody = document.querySelector('#emails-table tbody');
+            tbody.innerHTML = '';
+
+            const emails = data.filter(log => log.event === 'Email Sent');
+
+            if (emails.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: #a5d6a7;">No emails logged yet.</td></tr>';
+                return;
+            }
+
+            // Sort newest first
+            emails.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            emails.forEach(log => {
+                const dateRaw = new Date(log.timestamp);
+                const dateStr = isNaN(dateRaw) ? 'N/A' : dateRaw.toLocaleString();
+
+                const to = log.details && log.details.to ? log.details.to : 'N/A';
+                const subject = log.details && log.details.subject ? log.details.subject : 'N/A';
+                const type = log.details && log.details.type ? log.details.type : 'N/A';
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="white-space: nowrap;">${dateStr}</td>
+                    <td><strong>${type}</strong></td>
+                    <td style="font-size: 0.9em; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${subject}</td>
+                    <td>${to}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderLeads(data) {
+            const tbody = document.querySelector('#leads-table tbody');
+            tbody.innerHTML = '';
+
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #a5d6a7;">No leads generated yet.</td></tr>';
+                return;
+            }
+
+            // Sort newest first
+            data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            data.forEach(lead => {
+                const dateRaw = new Date(lead.timestamp);
+                const dateStr = isNaN(dateRaw) ? 'N/A' : dateRaw.toLocaleString();
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${dateStr}</td>
+                    <td><strong>${lead.yourName}</strong></td>
+                    <td>${lead.yourEmail}</td>
+                    <td><strong>${lead.bizName}</strong></td>
+                    <td>${lead.bizEmail || '—'}</td>
+                    <td class="code-col" style="font-size: 0.9em; max-width: 250px; overflow: hidden; text-overflow: ellipsis;">${lead.matchedReferrer || (lead.referralCode || 'Direct/Unknown')}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Initialize on load
+        fetchDashboardData();
+    </script>
+</body>
+
+</html>

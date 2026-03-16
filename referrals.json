@@ -1,0 +1,14 @@
+[
+  {
+    "id": "f8b559f7-8434-4221-8d3c-2eb468ac72c5",
+    "firstName": "Testy",
+    "lastName": "McTester",
+    "email": "test@example.com",
+    "company": "Test Inc",
+    "phone": null,
+    "referralCode": "testy-mctester-51b364ac",
+    "referralUrl": "https://nwcypresslogistics.com/ref/testy-mctester-51b364ac",
+    "timestamp": "2026-03-15T22:35:34.041Z",
+    "sessionsCount": 2
+  }
+]

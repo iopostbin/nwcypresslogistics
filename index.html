@@ -1,681 +1,60 @@
 <!doctype html>
 <!-- Meta Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1685505449095370');
-fbq('track', 'PageView');
+    !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1685505449095370');
+    fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1685505449095370&ev=PageView&noscript=1"
-/></noscript>
+        src="https://www.facebook.com/tr?id=1685505449095370&ev=PageView&noscript=1" /></noscript>
 <!-- End Meta Pixel Code -->
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      NW Cypress Logistics LLC - Professional Logistics Services in Oregon
+        NW Cypress Logistics LLC - Professional Logistics Services in Oregon
     </title>
-    <meta
-      name="description"
-      content="NW Cypress Logistics LLC provides comprehensive logistics services including storage, packing, and shipping through USPS, FedEx, UPS, and DHL. Serving businesses globally from Oregon."
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        color: #e8f5e8;
-        background: linear-gradient(
-          135deg,
-          #0d1f14 0%,
-          #1a2e1a 50%,
-          #253325 100%
-        );
-        min-height: 100vh;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      /* Header */
-      header {
-        background: rgba(13, 31, 20, 0.95);
-        backdrop-filter: blur(15px);
-        padding: 1rem 0;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        transition: all 0.3s ease;
-        border-bottom: 2px solid rgba(139, 195, 74, 0.3);
-      }
-
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: #8bc34a;
-        text-decoration: none;
-      }
-
-      .nav-links {
-        display: flex;
-        list-style: none;
-        gap: 2rem;
-      }
-
-      .nav-links a {
-        color: #a5d6a7;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      .nav-links a:hover {
-        color: #8bc34a;
-      }
-
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: #8bc34a;
-        transition: width 0.3s ease;
-      }
-
-      .nav-links a:hover::after {
-        width: 100%;
-      }
-
-      /* Hero Section */
-      .hero {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: white;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><path d="M0,100 C300,150 600,50 900,100 C1050,125 1150,75 1200,100 L1200,400 L0,400 Z" fill="%23388e3c" opacity="0.3"/><path d="M0,200 C300,250 600,150 900,200 C1050,225 1150,175 1200,200 L1200,400 L0,400 Z" fill="%234caf50" opacity="0.2"/></svg>')
-          no-repeat center bottom;
-        background-size: cover;
-      }
-
-      .hero-content {
-        z-index: 2;
-        animation: fadeInUp 1s ease;
-      }
-
-      .hero h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
-        background: linear-gradient(45deg, #8bc34a, #a5d6a7);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .hero .subtitle {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
-        color: #a5d6a7;
-      }
-
-      .hero p {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .global-badge {
-        display: inline-block;
-        background: linear-gradient(135deg, #4caf50, #388e3c);
-        padding: 8px 20px;
-        border-radius: 20px;
-        margin-top: 1rem;
-        font-weight: 300;
-        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-      }
-
-      .btn {
-        display: inline-block;
-        padding: 12px 30px;
-        background: rgba(139, 195, 74, 0.2);
-        color: white;
-        text-decoration: none;
-        border-radius: 25px;
-        border: 2px solid rgba(139, 195, 74, 0.6);
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .btn:hover {
-        background: rgba(139, 195, 74, 0.4);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(139, 195, 74, 0.3);
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, #66bb6a, #4caf50);
-        border-color: #4caf50;
-      }
-
-      .btn-primary:hover {
-        background: linear-gradient(135deg, #4caf50, #388e3c);
-        border-color: #388e3c;
-        box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
-      }
-
-      /* Forest Decorations */
-      .forest-element {
-        position: absolute;
-        color: rgba(139, 195, 74, 0.3);
-        font-size: 2rem;
-        animation: forestFloat 8s ease-in-out infinite;
-        pointer-events: none;
-      }
-
-      .forest-element:nth-child(1) {
-        top: 15%;
-        left: 8%;
-        animation-delay: 0s;
-      }
-
-      .forest-element:nth-child(2) {
-        top: 25%;
-        right: 12%;
-        animation-delay: 2s;
-      }
-
-      .forest-element:nth-child(3) {
-        bottom: 30%;
-        left: 15%;
-        animation-delay: 4s;
-      }
-
-      .forest-element:nth-child(4) {
-        top: 70%;
-        right: 8%;
-        animation-delay: 6s;
-      }
-
-      /* Sections */
-      section {
-        padding: 100px 0;
-        background: linear-gradient(145deg, #1a2e1a 0%, #0f1f0f 100%);
-        margin-top: -50px;
-        border-radius: 50px 50px 0 0;
-        position: relative;
-        z-index: 3;
-      }
-
-      .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-        background: linear-gradient(45deg, #8bc34a, #a5d6a7);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      /* Services Grid */
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-      }
-
-      .service-card {
-        background: linear-gradient(145deg, #253325, #1a2e1a);
-        padding: 2rem;
-        border-radius: 15px;
-        text-align: center;
-        transition: all 0.3s ease;
-        border: 2px solid rgba(139, 195, 74, 0.2);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .service-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 30px rgba(139, 195, 74, 0.2);
-        border-color: rgba(139, 195, 74, 0.5);
-      }
-
-      .service-icon {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-        display: block;
-      }
-
-      .service-card h3 {
-        color: #8bc34a;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-      }
-
-      .service-card p {
-        color: #a5d6a7;
-        line-height: 1.8;
-      }
-
-      /* Image Gallery */
-      .image-gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-      }
-
-      .gallery-item {
-        position: relative;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
-      }
-
-      .gallery-item:hover {
-        transform: scale(1.05);
-        box-shadow: 0 12px 30px rgba(139, 195, 74, 0.3);
-      }
-
-      .gallery-item img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        display: block;
-      }
-
-      .gallery-caption {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(
-          to top,
-          rgba(13, 31, 20, 0.95),
-          transparent
-        );
-        padding: 2rem 1rem 1rem;
-        color: #a5d6a7;
-        font-weight: 600;
-        text-align: center;
-      }
-
-      /* Features Section */
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-      }
-
-      .feature-item {
-        background: linear-gradient(145deg, #1a2e1a, #253325);
-        padding: 2rem;
-        border-radius: 15px;
-        border-left: 4px solid #8bc34a;
-        transition: all 0.3s ease;
-      }
-
-      .feature-item:hover {
-        transform: translateX(10px);
-        box-shadow: -4px 4px 20px rgba(139, 195, 74, 0.2);
-      }
-
-      .feature-item h3 {
-        color: #8bc34a;
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
-      }
-
-      .feature-item p {
-        color: #a5d6a7;
-      }
-
-      /* About Section */
-      .about-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        align-items: center;
-        margin-top: 3rem;
-      }
-
-      .about-text {
-        padding: 2rem;
-      }
-
-      .about-text h3 {
-        color: #8bc34a;
-        margin-bottom: 1rem;
-        font-size: 1.8rem;
-      }
-
-      .about-text p {
-        color: #a5d6a7;
-        margin-bottom: 1rem;
-        line-height: 1.8;
-      }
-
-      /* Contact Section */
-      .contact-section {
-        background: linear-gradient(145deg, #0f1f0f, #1a2e1a);
-      }
-
-      .contact-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        margin-top: 3rem;
-      }
-
-      .contact-info {
-        background: linear-gradient(145deg, #253325, #1a2e1a);
-        padding: 2rem;
-        border-radius: 15px;
-        border: 2px solid rgba(139, 195, 74, 0.2);
-      }
-
-      .contact-info h3 {
-        color: #8bc34a;
-        margin-bottom: 1.5rem;
-        font-size: 1.8rem;
-      }
-
-      .contact-info p {
-        color: #a5d6a7;
-        margin-bottom: 1rem;
-      }
-
-      .contact-form {
-        background: linear-gradient(145deg, #253325, #1a2e1a);
-        padding: 2rem;
-        border-radius: 15px;
-        border: 2px solid rgba(139, 195, 74, 0.2);
-      }
-
-      .form-group {
-        margin-bottom: 1.5rem;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: #8bc34a;
-        font-weight: 600;
-      }
-
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid rgba(139, 195, 74, 0.3);
-        border-radius: 8px;
-        background: rgba(13, 31, 20, 0.5);
-        color: #e8f5e8;
-        font-family: inherit;
-        transition: all 0.3s ease;
-      }
-
-      .form-group input:focus,
-      .form-group textarea:focus {
-        outline: none;
-        border-color: #8bc34a;
-        box-shadow: 0 0 10px rgba(139, 195, 74, 0.2);
-      }
-
-      .form-group textarea {
-        min-height: 120px;
-        resize: vertical;
-      }
-
-      .form-submit {
-        width: 100%;
-        padding: 15px;
-        background: linear-gradient(135deg, #66bb6a, #4caf50);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .form-submit:hover {
-        background: linear-gradient(135deg, #4caf50, #388e3c);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
-      }
-
-      .form-submit:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-      }
-
-      .success-message,
-      .error-message {
-        display: none;
-        padding: 1rem;
-        border-radius: 8px;
-        margin-bottom: 1.5rem;
-        text-align: center;
-      }
-
-      .success-message {
-        background: rgba(76, 175, 80, 0.2);
-        border: 2px solid #4caf50;
-        color: #8bc34a;
-      }
-
-      .error-message {
-        background: rgba(211, 47, 47, 0.2);
-        border: 2px solid #d32f2f;
-        color: #ff8a80;
-      }
-
-      /* Footer */
-      footer {
-        background: rgba(13, 31, 20, 0.95);
-        padding: 3rem 0 2rem;
-        text-align: center;
-        border-top: 2px solid rgba(139, 195, 74, 0.3);
-      }
-
-      .footer-content {
-        margin-bottom: 2rem;
-      }
-
-      .footer-content h3 {
-        color: #8bc34a;
-        margin-bottom: 1rem;
-      }
-
-      .footer-content p {
-        color: #a5d6a7;
-      }
-
-      footer p {
-        color: #a5d6a7;
-        opacity: 0.8;
-      }
-
-      /* Animations */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes forestFloat {
-        0%,
-        100% {
-          transform: translateY(0) rotate(0deg);
-        }
-        50% {
-          transform: translateY(-20px) rotate(10deg);
-        }
-      }
-
-      .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s ease;
-      }
-
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 2rem;
-        }
-
-        .hero {
-          position: relative;
-          width: 100%;
-        }
-
-        .hero-content {
-          position: relative;
-          width: 100%;
-          background-image: url("https://images.unsplash.com/photo-1740914994162-0b2a49280aeb?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8M3x8fGVufDB8fHx8fA%3D%3D");
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
-          min-height: 600px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          padding: 4rem 2rem;
-        }
-
-        /* Dark green overlay */
-        .hero-content::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(
-            20,
-            60,
-            30,
-            0.7
-          ); /* Dark green transparent overlay */
-          z-index: 1;
-        }
-
-        /* Make sure content is above overlay */
-        .hero-content > * {
-          position: relative;
-          z-index: 2;
-        }
-
-        .hero .subtitle {
-          font-size: 1rem;
-        }
-
-        .hero p {
-          font-size: 0.9rem;
-        }
-
-        .nav-links {
-          gap: 1rem;
-        }
-
-        .services-grid,
-        .features-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .contact-content,
-        .about-content {
-          grid-template-columns: 1fr;
-        }
-
-        .image-gallery {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </head>
-  <body>
+    <meta name="description"
+        content="NW Cypress Logistics LLC provides comprehensive logistics services including storage, packing, and shipping through USPS, FedEx, UPS, and DHL. Serving businesses globally from Oregon." />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
     <!-- Header -->
     <header id="header">
-      <nav class="container">
-        <a href="#" class="logo">NW Cypress Logistics</a>
-        <ul class="nav-links">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+        <nav class="container">
+            <a href="#" class="logo">NW Cypress Logistics</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#referral" class="nav-referral">Referral Program</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-      <div class="forest-element">🌲</div>
-      <div class="forest-element">🌿</div>
-      <div class="forest-element">🍃</div>
-      <div class="forest-element">🌳</div>
+        <div class="forest-element">🌲</div>
+        <div class="forest-element">🌿</div>
+        <div class="forest-element">🍃</div>
+        <div class="forest-element">🌳</div>
 
-      <div
-        class="hero-content"
-        style="
+        <div class="hero-content" style="
           position: relative;
           width: 100%;
           background-image: url(&quot;https://plus.unsplash.com/premium_photo-1664300792059-863ccfe55932?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&quot;);
@@ -688,10 +67,8 @@ src="https://www.facebook.com/tr?id=1685505449095370&ev=PageView&noscript=1"
           justify-content: center;
           align-items: center;
           padding: 4rem 2rem;
-        "
-      >
-        <div
-          style="
+        ">
+            <div style="
             content: &quot;&quot;;
             position: absolute;
             top: 0;
@@ -700,501 +77,498 @@ src="https://www.facebook.com/tr?id=1685505449095370&ev=PageView&noscript=1"
             bottom: 0;
             background: rgba(20, 60, 30, 0.7);
             z-index: 1;
-          "
-        ></div>
+          "></div>
 
-        <div style="position: relative; z-index: 2; text-align: center">
-          <h1>NW Cypress Logistics LLC</h1>
-          <p class="subtitle">Your Trusted Partner in Professional Logistics</p>
-          <p>
-            From Oregon to the world - we provide comprehensive storage,
-            packing, and shipping services through USPS, FedEx, UPS, and DHL.
-          </p>
-          <div style="margin-top: 2rem">
-            <a href="#contact" class="btn btn-primary">Get Started</a>
-            <a href="#services" class="btn">Our Services</a>
-          </div>
+            <div style="position: relative; z-index: 2; text-align: center">
+                <h1>NW Cypress Logistics LLC</h1>
+                <p class="subtitle">Your Trusted Partner in Professional Logistics</p>
+                <p>
+                    From Oregon to the world - we provide comprehensive storage,
+                    packing, and shipping services through USPS, FedEx, UPS, and DHL.
+                </p>
+                <div style="margin-top: 2rem">
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                    <a href="#services" class="btn">Our Services</a>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- Services Section -->
     <section id="services">
-      <div class="container">
-        <h2 class="section-title">🌲 Our Services</h2>
-        <div class="services-grid">
-          <div class="service-card fade-in">
-            <span class="service-icon">📦</span>
-            <h3>Professional Packing</h3>
-            <p>
-              Expert packing services to ensure your items arrive safely,
-              whether shipping locally or internationally. We handle fragile,
-              oversized, and specialized items.
-            </p>
-          </div>
-          <div class="service-card fade-in">
-            <span class="service-icon">🚚</span>
-            <h3>Multi-Carrier Shipping</h3>
-            <p>
-              Access to USPS, FedEx, UPS, and DHL services. We help you choose
-              the best carrier for your budget, timeline, and destination
-              worldwide.
-            </p>
-          </div>
-          <div class="service-card fade-in">
-            <span class="service-icon">🏪</span>
-            <h3>Secure Storage</h3>
-            <p>
-              Climate-controlled storage solutions for short and long-term
-              needs. Perfect for inventory management and logistics
-              optimization.
-            </p>
-          </div>
-          <div class="service-card fade-in">
-            <span class="service-icon">🌍</span>
-            <h3>Global Business Solutions</h3>
-            <p>
-              Specialized logistics support for businesses operating
-              internationally. Customs documentation, international shipping,
-              and supply chain management.
-            </p>
-          </div>
-          <div class="service-card fade-in">
-            <span class="service-icon">📋</span>
-            <h3>Fulfillment Services</h3>
-            <p>
-              Complete order fulfillment for e-commerce and B2B businesses. From
-              receiving to packing to shipping - we handle it all.
-            </p>
-          </div>
-          <div class="service-card fade-in">
-            <span class="service-icon">🔒</span>
-            <h3>Specialty Handling</h3>
-            <p>
-              White glove service for valuable, fragile, or oversized items.
-              Artwork, electronics, furniture, and more handled with expert
-              care.
-            </p>
-          </div>
+        <div class="container">
+            <h2 class="section-title">🌲 Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <span class="service-icon">📦</span>
+                    <h3>Professional Packing</h3>
+                    <p>
+                        Expert packing services to ensure your items arrive safely,
+                        whether shipping locally or internationally. We handle fragile,
+                        oversized, and specialized items.
+                    </p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">🚚</span>
+                    <h3>Multi-Carrier Shipping</h3>
+                    <p>
+                        Access to USPS, FedEx, UPS, and DHL services. We help you choose
+                        the best carrier for your budget, timeline, and destination
+                        worldwide.
+                    </p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">🏪</span>
+                    <h3>Secure Storage</h3>
+                    <p>
+                        Climate-controlled storage solutions for short and long-term
+                        needs. Perfect for inventory management and logistics
+                        optimization.
+                    </p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">🌍</span>
+                    <h3>Global Business Solutions</h3>
+                    <p>
+                        Specialized logistics support for businesses operating
+                        internationally. Customs documentation, international shipping,
+                        and supply chain management.
+                    </p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">📋</span>
+                    <h3>Fulfillment Services</h3>
+                    <p>
+                        Complete order fulfillment for e-commerce and B2B businesses. From
+                        receiving to packing to shipping - we handle it all.
+                    </p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">🔒</span>
+                    <h3>Specialty Handling</h3>
+                    <p>
+                        White glove service for valuable, fragile, or oversized items.
+                        Artwork, electronics, furniture, and more handled with expert
+                        care.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- Image Gallery Section -->
     <section id="gallery">
-      <div class="container">
-        <h2 class="section-title">🌿 Our Logistics Operations</h2>
-        <div class="image-gallery">
-          <div class="gallery-item fade-in">
-            <img
-              src="https://images.unsplash.com/photo-1740914994162-0b2a49280aeb?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8M3x8fGVufDB8fHx8fA%3D%3D"
-            />
-            <div class="gallery-caption">Secure Warehouse Storage</div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img
-              src="https://www.3plsoftware.com/3pl/wp-content/uploads/2023/02/image.png"
-            />
-            <div class="gallery-caption">Multi-Carrier Shipping Fleet</div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img
-              src="https://cdn-ilaeadh.nitrocdn.com/UnAFfTqfoHKRwMhikRtSYtATXULTzYKf/assets/images/optimized/rev-863aedd/www.amsc-usa.com/wp-content/uploads/2023/08/an-example-of-a-warehouse-packing-station-1024x576.jpg"
-            />
-            <div class="gallery-caption">Expert Packing Services</div>
-          </div>
-          <div class="gallery-item fade-in">
-            <img
-              src="https://i.insider.com/5721f5c6dd0895363e8b4817?width=800&format=jpeg&auto=webp"
-            />
-            <div class="gallery-caption">Worldwide Business Logistics</div>
-          </div>
+        <div class="container">
+            <h2 class="section-title">🌿 Our Logistics Operations</h2>
+            <div class="image-gallery">
+                <div class="gallery-item fade-in">
+                    <img
+                        src="https://images.unsplash.com/photo-1740914994162-0b2a49280aeb?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8M3x8fGVufDB8fHx8fA%3D%3D" />
+                    <div class="gallery-caption">Secure Warehouse Storage</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://www.3plsoftware.com/3pl/wp-content/uploads/2023/02/image.png" />
+                    <div class="gallery-caption">Multi-Carrier Shipping Fleet</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img
+                        src="https://cdn-ilaeadh.nitrocdn.com/UnAFfTqfoHKRwMhikRtSYtATXULTzYKf/assets/images/optimized/rev-863aedd/www.amsc-usa.com/wp-content/uploads/2023/08/an-example-of-a-warehouse-packing-station-1024x576.jpg" />
+                    <div class="gallery-caption">Expert Packing Services</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://i.insider.com/5721f5c6dd0895363e8b4817?width=800&format=jpeg&auto=webp" />
+                    <div class="gallery-caption">Worldwide Business Logistics</div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- Features Section -->
     <section id="features">
-      <div class="container">
-        <h2 class="section-title">🍃 Why Choose NW Cypress</h2>
-        <div class="features-grid">
-          <div class="feature-item fade-in">
-            <h3>🌍 Global Reach</h3>
-            <p>
-              We serve businesses worldwide with comprehensive international
-              shipping solutions through our partnerships with USPS, FedEx, UPS,
-              and DHL.
-            </p>
-          </div>
-          <div class="feature-item fade-in">
-            <h3>⚡ Fast & Reliable</h3>
-            <p>
-              Quick turnaround times and dependable service. We understand that
-              time is money in business logistics.
-            </p>
-          </div>
-          <div class="feature-item fade-in">
-            <h3>💰 Competitive Pricing</h3>
-            <p>
-              Volume discounts and competitive rates across all major carriers.
-              We help you optimize shipping costs without sacrificing quality.
-            </p>
-          </div>
-          <div class="feature-item fade-in">
-            <h3>🔐 Secure Handling</h3>
-            <p>
-              Advanced security measures and careful handling protocols. Your
-              shipments are protected every step of the way.
-            </p>
-          </div>
-          <div class="feature-item fade-in">
-            <h3>📊 Business Solutions</h3>
-            <p>
-              Customized logistics solutions for businesses of all sizes, from
-              startups to established enterprises operating globally.
-            </p>
-          </div>
-          <div class="feature-item fade-in">
-            <h3>🎯 Local Expertise</h3>
-            <p>
-              Based in Oregon with deep understanding of Pacific Northwest
-              logistics and connections to international markets.
-            </p>
-          </div>
+        <div class="container">
+            <h2 class="section-title">🍃 Why Choose NW Cypress</h2>
+            <div class="features-grid">
+                <div class="feature-item fade-in">
+                    <h3>🌍 Global Reach</h3>
+                    <p>
+                        We serve businesses worldwide with comprehensive international
+                        shipping solutions through our partnerships with USPS, FedEx, UPS,
+                        and DHL.
+                    </p>
+                </div>
+                <div class="feature-item fade-in">
+                    <h3>⚡ Fast & Reliable</h3>
+                    <p>
+                        Quick turnaround times and dependable service. We understand that
+                        time is money in business logistics.
+                    </p>
+                </div>
+                <div class="feature-item fade-in">
+                    <h3>💰 Competitive Pricing</h3>
+                    <p>
+                        Volume discounts and competitive rates across all major carriers.
+                        We help you optimize shipping costs without sacrificing quality.
+                    </p>
+                </div>
+                <div class="feature-item fade-in">
+                    <h3>🔐 Secure Handling</h3>
+                    <p>
+                        Advanced security measures and careful handling protocols. Your
+                        shipments are protected every step of the way.
+                    </p>
+                </div>
+                <div class="feature-item fade-in">
+                    <h3>📊 Business Solutions</h3>
+                    <p>
+                        Customized logistics solutions for businesses of all sizes, from
+                        startups to established enterprises operating globally.
+                    </p>
+                </div>
+                <div class="feature-item fade-in">
+                    <h3>🎯 Local Expertise</h3>
+                    <p>
+                        Based in Oregon with deep understanding of Pacific Northwest
+                        logistics and connections to international markets.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
-      <div class="container">
-        <h2 class="section-title">🌳 About NW Cypress Logistics</h2>
-        <div class="about-content">
-          <div class="about-text fade-in">
-            <h3>Your Partner in Global Business Logistics</h3>
-            <p>
-              NW Cypress Logistics LLC is a professional logistics company based
-              in Oregon, dedicated to providing comprehensive shipping, packing,
-              and storage solutions for businesses operating globally.
-            </p>
-            <p>
-              We partner with major carriers including USPS, FedEx, UPS, and DHL
-              to offer flexible shipping options that meet your specific needs,
-              whether you're shipping across town or around the world.
-            </p>
-            <p>
-              Our commitment to excellence, combined with our understanding of
-              both local and international logistics, makes us the ideal partner
-              for businesses looking to streamline their supply chain and expand
-              their global reach.
-            </p>
-          </div>
-          <div class="fade-in">
-            <div
-              style="
+        <div class="container">
+            <h2 class="section-title">🌳 About NW Cypress Logistics</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Your Partner in Global Business Logistics</h3>
+                    <p>
+                        NW Cypress Logistics LLC is a professional logistics company based
+                        in Oregon, dedicated to providing comprehensive shipping, packing,
+                        and storage solutions for businesses operating globally.
+                    </p>
+                    <p>
+                        We partner with major carriers including USPS, FedEx, UPS, and DHL
+                        to offer flexible shipping options that meet your specific needs,
+                        whether you're shipping across town or around the world.
+                    </p>
+                    <p>
+                        Our commitment to excellence, combined with our understanding of
+                        both local and international logistics, makes us the ideal partner
+                        for businesses looking to streamline their supply chain and expand
+                        their global reach.
+                    </p>
+                </div>
+                <div class="fade-in">
+                    <div style="
                 background: linear-gradient(145deg, #253325, #1a2e1a);
                 padding: 3rem;
                 border-radius: 15px;
                 border: 2px solid rgba(139, 195, 74, 0.3);
                 text-align: center;
-              "
-            >
-              <h3
-                style="color: #8bc34a; margin-bottom: 2rem; font-size: 1.8rem"
-              >
-                🌲 Rooted in Oregon, Growing Globally
-              </h3>
-              <p style="color: #a5d6a7; font-size: 1.1rem; line-height: 1.8">
-                Like the resilient cypress trees of the Pacific Northwest, our
-                business stands strong and adaptable, ready to support your
-                growth from local operations to international expansion. With
-                every shipment, every package, and every partnership, we bring
-                the wisdom of nature to modern logistics.
-              </p>
-              <div class="fade-in" style="margin-top: 2rem">
-                <span style="font-size: 1.5rem">🌲🌿🍃🌳🌱</span>
-              </div>
+              ">
+                        <h3 style="color: #8bc34a; margin-bottom: 2rem; font-size: 1.8rem">
+                            🌲 Rooted in Oregon, Growing Globally
+                        </h3>
+                        <p style="color: #a5d6a7; font-size: 1.1rem; line-height: 1.8">
+                            Like the resilient cypress trees of the Pacific Northwest, our
+                            business stands strong and adaptable, ready to support your
+                            growth from local operations to international expansion. With
+                            every shipment, every package, and every partnership, we bring
+                            the wisdom of nature to modern logistics.
+                        </p>
+                        <div class="fade-in" style="margin-top: 2rem">
+                            <span style="font-size: 1.5rem">🌲🌿🍃🌳🌱</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
-      <div class="container">
-        <h2 class="section-title" style="color: #a5d6a7">
-          🌿 Let's Grow Together
-        </h2>
-        <div class="contact-content">
-          <div class="contact-info fade-in">
-            <h3>Contact Information</h3>
-            <p>📍 Located in Oregon</p>
-            <p>
-              📧
-              <a
-                href="mailto:contact@nwcypresslogistics.com"
-                style="color: #8bc34a; text-decoration: none"
-                >contact@nwcypresslogistics.com</a
-              >
-            </p>
-            <p>🕐 Business Hours: Monday - Friday, 8:00 AM - 6:00 PM</p>
-            <p style="margin-top: 2rem">
-              Ready to expand your business globally? Reach out through our
-              contact form, and we'll help you build a logistics solution that
-              supports your international growth. From local Oregon shipping to
-              worldwide delivery, we're here to help your business flourish in
-              global markets.
-            </p>
-            <div style="margin-top: 2rem">
-              <h3 style="color: #8bc34a; margin-bottom: 1rem">
-                🌍 Serving Businesses Worldwide
-              </h3>
-              <p style="color: #a5d6a7">
-                • USPS International Services<br />
-                • FedEx Global Network<br />
-                • UPS Worldwide Express<br />
-                • DHL International Shipping<br />
-                • Customs Documentation Support<br />
-                • International Supply Chain Management
-              </p>
+        <div class="container">
+            <h2 class="section-title" style="color: #a5d6a7">
+                🌿 Let's Grow Together
+            </h2>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <h3>Contact Information</h3>
+                    <p>📍 Located in Oregon</p>
+                    <p>
+                        📧
+                        <a href="mailto:contact@nwcypresslogistics.com"
+                            style="color: #8bc34a; text-decoration: none">contact@nwcypresslogistics.com</a>
+                    </p>
+                    <p>🕐 Business Hours: Monday - Friday, 8:00 AM - 6:00 PM</p>
+                    <p style="margin-top: 2rem">
+                        Ready to expand your business globally? Reach out through our
+                        contact form, and we'll help you build a logistics solution that
+                        supports your international growth. From local Oregon shipping to
+                        worldwide delivery, we're here to help your business flourish in
+                        global markets.
+                    </p>
+                    <div style="margin-top: 2rem">
+                        <h3 style="color: #8bc34a; margin-bottom: 1rem">
+                            🌍 Serving Businesses Worldwide
+                        </h3>
+                        <p style="color: #a5d6a7">
+                            • USPS International Services<br />
+                            • FedEx Global Network<br />
+                            • UPS Worldwide Express<br />
+                            • DHL International Shipping<br />
+                            • Customs Documentation Support<br />
+                            • International Supply Chain Management
+                        </p>
+                    </div>
+                    <div style="margin-top: 2rem; font-size: 2rem; opacity: 0.6">
+                        🌲🌿🍃🌳🌱🍂🌾🎋
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <div id="success-message" class="success-message">
+                        🌱 Thank you! Your message has taken root. We'll help it flourish
+                        with a response within 24 hours.
+                    </div>
+                    <div id="error-message" class="error-message">
+                        🍂 Oops! There was an issue sending your message. Please try again
+                        or reach us directly at contact@nwcypresslogistics.com
+                    </div>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="firstName">🌿 First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required
+                                placeholder="Enter your first name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">🌲 Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required
+                                placeholder="Enter your last name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">📧 Email Address *</label>
+                            <input type="email" id="email" name="email" required
+                                placeholder="Enter your email address" />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">📞 Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" />
+                        </div>
+                        <div class="form-group">
+                            <label for="message">💬 Message *</label>
+                            <textarea id="message" name="message" required
+                                placeholder="Tell us about your logistics needs and let's grow together..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">
+                            🌱 Plant Your Message
+                        </button>
+                    </form>
+                </div>
             </div>
-            <div style="margin-top: 2rem; font-size: 2rem; opacity: 0.6">
-              🌲🌿🍃🌳🌱🍂🌾🎋
-            </div>
-          </div>
-          <div class="contact-form fade-in">
-            <div id="success-message" class="success-message">
-              🌱 Thank you! Your message has taken root. We'll help it flourish
-              with a response within 24 hours.
-            </div>
-            <div id="error-message" class="error-message">
-              🍂 Oops! There was an issue sending your message. Please try again
-              or reach us directly at contact@nwcypresslogistics.com
-            </div>
-            <form id="contact-form">
-              <div class="form-group">
-                <label for="firstName">🌿 First Name *</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  required
-                  placeholder="Enter your first name"
-                />
-              </div>
-              <div class="form-group">
-                <label for="lastName">🌲 Last Name *</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  required
-                  placeholder="Enter your last name"
-                />
-              </div>
-              <div class="form-group">
-                <label for="email">📧 Email Address *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="Enter your email address"
-                />
-              </div>
-              <div class="form-group">
-                <label for="phone">📞 Phone Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="Enter your phone number"
-                />
-              </div>
-              <div class="form-group">
-                <label for="message">💬 Message *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  placeholder="Tell us about your logistics needs and let's grow together..."
-                ></textarea>
-              </div>
-              <button type="submit" class="form-submit">
-                🌱 Plant Your Message
-              </button>
-            </form>
-          </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Referral Program Section -->
+    <section id="referral" class="referral-section">
+        <div class="container">
+            <h2 class="section-title">🌱 Referral Program</h2>
+
+            <!-- Hero Banner -->
+            <div class="referral-hero fade-in">
+                <h3>Grow Together, Earn Together</h3>
+                <p>
+                    Know a business that could benefit from reliable logistics? Refer them to NW Cypress Logistics
+                    and earn rewards every time they ship with us. The more you share, the more you grow — just like
+                    the forests we're named after.
+                </p>
+            </div>
+
+            <!-- Get Your Unique Referral Link -->
+            <div class="get-link-panel fade-in">
+                <div class="get-link-inner">
+                    <div class="get-link-copy">
+                        <h3>🔗 Get Your Unique<br>Referral Link</h3>
+                        <p>
+                            Sign up below and we'll generate a personal referral link just for you.
+                            Share it with anyone — every new customer who signs up through your link earns you rewards
+                            automatically.
+                        </p>
+                        <ul class="get-link-perks">
+                            <li>Your own branded referral URL, ready to share</li>
+                            <li>Works on email, social media, and messaging apps</li>
+                            <li>Referrals are tracked automatically</li>
+                            <li>No limit on how many times you can share it</li>
+                        </ul>
+                    </div>
+
+                    <div class="get-link-form-box">
+                        <h4>🌱 Request Your Link</h4>
+                        <div id="get-link-success">✅ Request received! Check your inbox — your unique referral link is
+                            on its way.</div>
+                        <form id="get-link-form">
+                            <div class="get-link-fields">
+                                <div class="form-group">
+                                    <label for="gl-first-name">🌿 First Name *</label>
+                                    <input type="text" id="gl-first-name" name="glFirstName" required
+                                        placeholder="First name" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="gl-last-name">🌲 Last Name *</label>
+                                    <input type="text" id="gl-last-name" name="glLastName" required
+                                        placeholder="Last name" />
+                                </div>
+                                <div class="form-group full">
+                                    <label for="gl-email">📧 Email Address *</label>
+                                    <input type="email" id="gl-email" name="glEmail" required
+                                        placeholder="your@email.com" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="gl-company">🏢 Company Name</label>
+                                    <input type="text" id="gl-company" name="glCompany"
+                                        placeholder="Your business (optional)" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="gl-phone">📞 Phone Number</label>
+                                    <input type="tel" id="gl-phone" name="glPhone" placeholder="Phone (optional)" />
+                                </div>
+                            </div>
+                            <button type="submit" class="form-submit">🔗 Generate My Referral Link</button>
+                        </form>
+
+                        <!-- Link result shown after submit -->
+                        <div class="link-result" id="link-result">
+                            <p>🎉 Your unique referral link is ready! Copy and share it anywhere. (We've also sent this
+                                to your email!)</p>
+                            <p style="margin-top: 1rem; margin-bottom: 0.5rem"><strong>Your Referral Code:</strong>
+                                <span class="link-code-text" id="link-code-text"
+                                    style="color: #8bc34a; font-family: monospace; font-size: 1.1rem"></span></p>
+                            <div class="link-result-url">
+                                <span class="link-url-text" id="link-url-text"></span>
+                                <button class="btn-copy" id="btn-copy" onclick="copyReferralLink()">📋 Copy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <h3 style="text-align:center; color:#a5d6a7; font-size:1.6rem; margin-bottom:2rem;">🍃 How It Works</h3>
+            <div class="referral-steps">
+                <div class="referral-step fade-in">
+                    <span class="step-number">1</span>
+                    <span class="step-icon">📋</span>
+                    <h4>Submit a Referral</h4>
+                    <p>Fill out the referral form below with your contact info and the business you're recommending.</p>
+                </div>
+                <div class="referral-step fade-in">
+                    <span class="step-number">2</span>
+                    <span class="step-icon">🤝</span>
+                    <h4>We Reach Out</h4>
+                    <p>Our team contacts the referred business and walks them through our logistics solutions.</p>
+                </div>
+                <div class="referral-step fade-in">
+                    <span class="step-number">3</span>
+                    <span class="step-icon">📦</span>
+                    <h4>They Start Shipping</h4>
+                    <p>Once your referral signs up and completes their first shipment, your reward is triggered.</p>
+                </div>
+                <div class="referral-step fade-in">
+                    <span class="step-number">4</span>
+                    <span class="step-icon">🎁</span>
+                    <h4>Collect Your Reward</h4>
+                    <p>Earn shipping credits or cash bonuses applied directly to your NW Cypress account.</p>
+                </div>
+            </div>
+
+
+            <!-- Submit Form -->
+            <div class="referral-form-wrap">
+                <div class="referral-cta-box fade-in">
+                    <h3>🌿 Why Refer?</h3>
+                    <p>
+                        Every business you introduce to NW Cypress Logistics helps build a stronger, more
+                        connected supply chain — and puts real rewards in your pocket.
+                    </p>
+                    <ul class="referral-benefit-list">
+                        <li><span class="icon">✅</span> No cap on the number of referrals</li>
+                        <li><span class="icon">✅</span> Rewards stack as you refer more businesses</li>
+                        <li><span class="icon">✅</span> Credits apply to USPS, FedEx, UPS, and DHL shipments</li>
+                        <li><span class="icon">✅</span> Cash bonus option for top-tier referrers</li>
+                        <li><span class="icon">✅</span> Track your referral status via email updates</li>
+                        <li><span class="icon">✅</span> Exclusive Redwood members get dedicated account support</li>
+                    </ul>
+                    <p style="font-size:0.88rem; opacity:0.75;">
+                        * Rewards are issued once the referred business completes their first paid shipment.
+                        See full program terms at contact@nwcypresslogistics.com.
+                    </p>
+                </div>
+
+                <div class="referral-form-card fade-in">
+                    <h3>📬 Submit a Referral</h3>
+                    <div id="referral-success">🌱 Referral submitted! We'll be in touch with you and your referred
+                        business shortly.</div>
+                    <form id="referral-form">
+                        <div class="form-group">
+                            <label for="ref-your-name">🌿 Your Name *</label>
+                            <input type="text" id="ref-your-name" name="yourName" required
+                                placeholder="Your full name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ref-your-email">📧 Your Email *</label>
+                            <input type="email" id="ref-your-email" name="yourEmail" required
+                                placeholder="Your email address" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ref-biz-name">🏢 Referred Business Name *</label>
+                            <input type="text" id="ref-biz-name" name="bizName" required
+                                placeholder="Business you're referring" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ref-biz-contact">👤 Their Contact Person</label>
+                            <input type="text" id="ref-biz-contact" name="bizContact"
+                                placeholder="Contact name at their company" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ref-biz-email">📩 Their Email or Phone</label>
+                            <input type="text" id="ref-biz-email" name="bizEmail"
+                                placeholder="Their email or phone number" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ref-notes">💬 Additional Notes</label>
+                            <textarea id="ref-notes" name="notes"
+                                placeholder="Tell us a little about their business and shipping needs..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">🌲 Submit Referral</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
-      <div class="container">
-        <div class="footer-content">
-          <h3>NW Cypress Logistics LLC</h3>
-          <p>
-            Your trusted logistics partner, rooted in Oregon, serving businesses
-            globally
-          </p>
-          <p style="margin-top: 1rem; color: #8bc34a; font-weight: 600">
-            🌍 USPS • FedEx • UPS • DHL
-          </p>
-          <div style="margin-top: 1rem; font-size: 1.2rem">🌲🍃🌿🌳🌱</div>
+        <div class="container">
+            <div class="footer-content">
+                <h3>NW Cypress Logistics LLC</h3>
+                <p>
+                    Your trusted logistics partner, rooted in Oregon, serving businesses
+                    globally
+                </p>
+                <p style="margin-top: 1rem; color: #8bc34a; font-weight: 600">
+                    🌍 USPS • FedEx • UPS • DHL
+                </p>
+                <div style="margin-top: 1rem; font-size: 1.2rem">🌲🍃🌿🌳🌱</div>
+            </div>
+            <p>
+                &copy; 2025 NW Cypress Logistics LLC. Growing strong together
+                worldwide.
+            </p>
         </div>
-        <p>
-          &copy; 2025 NW Cypress Logistics LLC. Growing strong together
-          worldwide.
-        </p>
-      </div>
     </footer>
 
-    <script>
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-        });
-      });
+    <script src="env.js"></script>
+    <script src="script.js" defer></script>
+</body>
 
-      // Header background change on scroll
-      window.addEventListener("scroll", function () {
-        const header = document.getElementById("header");
-        if (window.scrollY > 100) {
-          header.style.background = "rgba(13, 31, 20, 0.98)";
-          header.style.backdropFilter = "blur(20px)";
-        } else {
-          header.style.background = "rgba(13, 31, 20, 0.95)";
-          header.style.backdropFilter = "blur(15px)";
-        }
-      });
-
-      // Fade in animation on scroll
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll(".fade-in").forEach(function (el) {
-        observer.observe(el);
-      });
-
-      // Contact form handling
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const formData = new FormData(this);
-          const data = Object.fromEntries(formData);
-
-          const submitButton = this.querySelector(".form-submit");
-          const originalText = submitButton.textContent;
-          submitButton.textContent = "Sending...";
-          submitButton.disabled = true;
-
-          const subject = encodeURIComponent(
-            "New Contact Form Submission from " +
-              data.firstName +
-              " " +
-              data.lastName,
-          );
-          const body = encodeURIComponent(
-            "Name: " +
-              data.firstName +
-              " " +
-              data.lastName +
-              "\n" +
-              "Email: " +
-              data.email +
-              "\n" +
-              "Phone: " +
-              (data.phone || "Not provided") +
-              "\n\n" +
-              "Message:\n" +
-              data.message,
-          );
-          const mailtoUrl =
-            "mailto:contact@nwcypresslogistics.com?subject=" +
-            subject +
-            "&body=" +
-            body;
-
-          window.location.href = mailtoUrl;
-
-          setTimeout(function () {
-            document.getElementById("success-message").style.display = "block";
-            document.getElementById("contact-form").reset();
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-
-            setTimeout(function () {
-              document.getElementById("success-message").style.display = "none";
-            }, 5000);
-          }, 1000);
-        });
-
-      // Service card hover effects
-      document.querySelectorAll(".service-card").forEach(function (card) {
-        card.addEventListener("mouseenter", function () {
-          this.style.background = "linear-gradient(135deg, #4caf50, #2e7d32)";
-          this.style.color = "white";
-        });
-
-        card.addEventListener("mouseleave", function () {
-          this.style.background = "linear-gradient(145deg, #253325, #1a2e1a)";
-          this.style.color = "#e8f5e8";
-        });
-      });
-
-      // Floating leaf particles
-      function createLeafParticle() {
-        const leaf = document.createElement("div");
-        const leafTypes = ["🍃", "🍂", "🌿"];
-        leaf.innerHTML =
-          leafTypes[Math.floor(Math.random() * leafTypes.length)];
-        leaf.style.position = "fixed";
-        leaf.style.left = Math.random() * window.innerWidth + "px";
-        leaf.style.top = "-50px";
-        leaf.style.fontSize = Math.random() * 1.5 + 0.5 + "rem";
-        leaf.style.opacity = Math.random() * 0.7 + 0.3;
-        leaf.style.pointerEvents = "none";
-        leaf.style.zIndex = "1";
-        leaf.style.transition = "all 8s linear";
-
-        document.body.appendChild(leaf);
-
-        setTimeout(function () {
-          leaf.style.top = window.innerHeight + 50 + "px";
-          leaf.style.transform =
-            "rotate(360deg) translateX(" + (Math.random() * 200 - 100) + "px)";
-        }, 100);
-
-        setTimeout(function () {
-          if (document.body.contains(leaf)) {
-            document.body.removeChild(leaf);
-          }
-        }, 8000);
-      }
-
-      setInterval(createLeafParticle, 3000);
-    </script>
-  </body>
 </html>

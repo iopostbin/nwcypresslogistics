@@ -1,0 +1,34 @@
+[
+  {
+    "id": "f4bf792f-6b63-475f-ae55-535b5a5fd23f",
+    "event": "Dashboard Visited",
+    "details": {
+      "ip": "::ffff:127.0.0.1"
+    },
+    "timestamp": "2026-03-15T23:05:51.447Z"
+  },
+  {
+    "id": "8f4b98a0-ecac-4af0-8bb3-b9e4a1bef53b",
+    "event": "Dashboard Visited",
+    "details": {
+      "ip": "::ffff:127.0.0.1"
+    },
+    "timestamp": "2026-03-15T23:36:36.152Z"
+  },
+  {
+    "id": "5e127c22-7a7e-4f98-b8fd-2aee1f0c6337",
+    "event": "Dashboard Visited",
+    "details": {
+      "ip": "::ffff:127.0.0.1"
+    },
+    "timestamp": "2026-03-16T00:48:57.167Z"
+  },
+  {
+    "id": "653ac99b-ae8b-4f46-afff-97f7e596d890",
+    "event": "Dashboard Visited",
+    "details": {
+      "ip": "::ffff:127.0.0.1"
+    },
+    "timestamp": "2026-03-16T01:18:38.558Z"
+  }
+]
