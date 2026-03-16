@@ -21,8 +21,6 @@ referalProgram/
 ├── env.js       # Required frontend environment variables
 ├── README.md    # This file
 ├── DONE.md      # Changelog
-├── FOCUS.md     # Files currently in focus for edits
-└── itterations/ # Timestamped snapshots of index.html
 ```
 
 ## Sections
